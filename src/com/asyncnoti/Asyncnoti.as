@@ -157,13 +157,22 @@ public class Asyncnoti extends EventDispatcher
 
         var data:Object = JSON2.decode(message);
 
-        var bodyData:String = data.data;
-        var bodyJsonData:Object;
-        try
+        if (typeof (data.data) == 'object')
         {
-            bodyJsonData = JSON.parse(bodyData);
-        } catch (err:Error)
+            bodyJsonData = data.data;
+            bodyData = null;
+        }
+        else
         {
+            var bodyData:String = data.data;
+            var bodyJsonData:Object;
+
+            try
+            {
+                bodyJsonData = JSON.parse(bodyData);
+            } catch (err:Error)
+            {
+            }
         }
 
         var asyncnotiEvent:AsyncnotiEvent;

@@ -1,6 +1,5 @@
 package com.asyncnoti
 {
-
 import net.zedia.utils.StringUtils;
 
 public final class AsyncnotiOptions
